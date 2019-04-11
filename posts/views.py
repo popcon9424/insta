@@ -23,7 +23,6 @@ def list(request):
     return render(request, 'posts/list.html', {'posts':posts})
     
 
-@require_POST
 def delete(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     post.delete()
