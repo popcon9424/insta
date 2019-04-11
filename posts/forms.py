@@ -11,4 +11,4 @@ class PostForm(forms.ModelForm):
     # 2. 해당 input field의 속성을 추가 & 어떤 모델을 조작할지(Meta 클래스)
     class Meta:
         model = Post
-        fields = ['content']
+        fields = ['content', 'image']
