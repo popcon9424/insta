@@ -30,3 +30,14 @@ def delete(request, post_id):
     return redirect('posts:list')
         
         
+def update(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == "POST":
+        # 실제 DB에 수정 반영
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('posts:list')
+    else:  # GET
+        form = PostForm(instance=post)
+        return render(request, 'posts/update.html', {'form':form})
